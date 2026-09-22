@@ -208,7 +208,14 @@
     color: var(--blue); background: color-mix(in srgb, var(--blue) 12%, transparent);
   }
   .steps li b { color: var(--ink); font-weight: 600; }
-  .grid > .card { min-width: 0; }
+  /* Offer block: two full-width rows, one card per row (desktop and mobile).
+     Scoped to .offers so the shared .grid rules stay untouched. */
+  .grid.offers { grid-template-columns: 1fr; }
+  .grid.offers > .card { min-width: 0; }
+  /* full-width card: keep the text measure readable instead of edge-to-edge */
+  .grid.offers .hook,
+  .grid.offers ul.pts li,
+  .grid.offers .regnote { max-width: 74ch; }
   .panel {
     background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 20px;
   }
@@ -257,7 +264,7 @@
 
   <div class="sec-label">Що ми робимо</div>
 
-  <div class="grid">
+  <div class="grid offers">
 
     <div class="card">
       <div class="chead">
